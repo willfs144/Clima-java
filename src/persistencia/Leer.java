@@ -1,17 +1,14 @@
 package persistencia;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-
 import ucar.ma2.InvalidRangeException;
-import ucar.nc2.NCdumpW;
 import ucar.nc2.NetcdfFile;
 import ucar.nc2.Variable;
 
 
 
 public class Leer {
-	String nombreArchivo = "D:\\William\\Proyectos_realizados\\Java\\POO\\Clima\\src\\recursos\\outN.3";
+	String nombreArchivo = "D:\\William\\Proyectos_realizados\\Java\\POO\\Clima\\src\\recursoBD\\outN.3";
 	String nombreVariable1 = "radialElev";
 	String nombreVariable2 = "siteLat";
 	
@@ -42,6 +39,15 @@ public class Leer {
 	private void mostrarDatosVariable(NetcdfFile ncfile)  {
 		
 		Variable v = ncfile.findVariable(nombreVariable1);
+		
+		
+		for (Variable variable: ncfile.getVariables()) {
+			System.err.println(variable.getFullName());
+			
+			
+		}
+		
+		//System.out.println(ncfile.getVariables().toString());
 		  if (null == v) {
 			  System.out.println("nulo");
 			  return;
