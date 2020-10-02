@@ -1,0 +1,11 @@
+https://www.unidata.ucar.edu/downloads/netcdf/
+https://www.unidata.ucar.edu/software/netcdf/java/examples/CreateNetcdf.java
+https://www.unidata.ucar.edu/software/netcdf-java/
+https://www.unidata.ucar.edu/software/netcdf-java/v4.6/tutorial/NetcdfFile.html
+https://www.unidata.ucar.edu/software/netcdf-java/v4.6/tutorial/NetcdfDataset.html
+https://www.unidata.ucar.edu/software/netcdf-java/v4.6/tutorial/NetcdfFile.html#DiskCache
+https://www.unidata.ucar.edu/software/netcdf/examples/programs/Simple_xy_wr.java
+https://github.com/Unidata/netcdf-java
+https://www.gfd-dennou.org/library/davis/workshop/2004-09-20/NetcdfJavaUserManual-2.2/pub/
+
+https://www.youtube.com/watch?v=eMUvqG940uc&ab_channel=MichaelS

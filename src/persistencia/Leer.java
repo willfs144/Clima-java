@@ -11,7 +11,7 @@ import ucar.nc2.Variable;
 
 
 public class Leer {
-	String nombreArchivo = "D:\\William\\Proyectos_realizados\\Java\\POO\\Clima\\src\\recursos\\outN.4";
+	String nombreArchivo = "D:\\William\\Proyectos_realizados\\Java\\POO\\Clima\\src\\recursos\\outN.3";
 	String nombreVariable1 = "radialElev";
 	String nombreVariable2 = "siteLat";
 	
@@ -39,7 +39,7 @@ public class Leer {
 		mostrarDatosVariable(ncfile);
 	}
 
-	private void mostrarDatosVariable(NetcdfFile ncfile) {
+	private void mostrarDatosVariable(NetcdfFile ncfile)  {
 		
 		Variable v = ncfile.findVariable(nombreVariable1);
 		  if (null == v) {
@@ -47,18 +47,17 @@ public class Leer {
 			  return;
 		  }
 		 try {
-		 ucar.ma2.Array data = v.read();
+		 ucar.ma2.Array data = v.read("1:1");
 		 System.out.println("Resultado: "+data.toString());
 		  
 		 } catch (IOException ioe) {
 			 System.out.println("trying to read " + nombreVariable1+" "+ioe);
 
-		  }
+		  } catch (InvalidRangeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-	}
-
-	public static void main(String[] args) {
-		new Leer();
 	}
 
 }
