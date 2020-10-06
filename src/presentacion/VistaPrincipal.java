@@ -52,9 +52,6 @@ public class VistaPrincipal extends JFrame {
 	}
 
 
-	public VistaPrincipal() {
-		// TODO Auto-generated constructor stub
-	}
 
 
 	private void agregarArchivoMenuInterfaz() {

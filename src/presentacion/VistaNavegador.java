@@ -14,6 +14,10 @@ public class VistaNavegador extends JPanel{
 	public VistaNavegador() {
 		this.listaNavegador = new JList();
 		this.modeloLista = new DefaultListModel();
+		
+	}
+	
+	public void cargarListaNavegar() {		
 		modeloLista.addElement("Hola mundo");
 		listaNavegador.setModel(modeloLista);
 		this.add(listaNavegador);

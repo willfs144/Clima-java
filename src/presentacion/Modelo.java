@@ -15,12 +15,15 @@ public class Modelo {
 public void iniciar() {		
 	this.vistaPrincipal = new VistaPrincipal(this);
 	this.vistaPrincipal.setSize(980, 700);
-	this.vistaPrincipal.setVisible(true);
-	
+	this.vistaPrincipal.setVisible(true);	
 	
 	System.out.println("Paso");
 		
 	}
+
+public void cargarListaNavegador() {
+	
+}
 
 
 }
