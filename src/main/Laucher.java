@@ -1,13 +1,14 @@
 package main;
 
-import persistencia.Leer;
+import presentacion.Modelo;
 
 public class Laucher {
 	
-	private Leer leer;
+	private Modelo modelo;
 	
 	public Laucher() {
-		leer = new Leer();
+		modelo = new Modelo();
+		modelo.iniciar();
 	}
 
 	public static void main(String[] args) {

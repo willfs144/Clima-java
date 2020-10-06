@@ -27,14 +27,33 @@ public class VistaPrincipal extends JFrame {
 	private JMenuItem menuItemGuardar;
 	private JMenu menuArchivo;
 	
+	private VistaNavegador vistaNavegador;
+	
 	private Modelo modelo;
 	private ControladorPrincipal controladorPrincipal;
 
 	
 	public VistaPrincipal(Modelo modelo) {
+		this.modelo = modelo;
+		this.controladorPrincipal = new ControladorPrincipal(this);
+		this.setLayout(new BorderLayout());
 		
-
+		/*
+		 * this.vistaDibujo = new VistaDibujo(modelo);
+			this.getContentPane().add(vistaDibujo, BorderLayout.CENTER);
+			this.vistaBotones = new VistaBotones(modelo);
+			this.getContentPane().add(vistaBotones, BorderLayout.NORTH);
+			this.vistaBotones.setLayout(new FlowLayout());	
+		 */
+		this.vistaNavegador = new VistaNavegador();
+		this.getContentPane().add(vistaNavegador, BorderLayout.LINE_START);
+		
 		agregarArchivoMenuInterfaz();		
+	}
+
+
+	public VistaPrincipal() {
+		// TODO Auto-generated constructor stub
 	}
 
 
