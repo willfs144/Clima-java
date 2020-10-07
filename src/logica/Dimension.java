@@ -2,6 +2,7 @@ package logica;
 
 public class Dimension {
 
+	
 	private String nombre;
 	private long longitud;
 	

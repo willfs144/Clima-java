@@ -7,7 +7,7 @@ import logica.Sistema;
 
 public class Modelo {
 	
-
+	private VistaNavegador vistaNavegador;
 	
 	private VistaPrincipal vistaPrincipal;
 	private Sistema sistema;
@@ -16,14 +16,22 @@ public void iniciar() {
 	this.vistaPrincipal = new VistaPrincipal(this);
 	this.vistaPrincipal.setSize(980, 700);
 	this.vistaPrincipal.setVisible(true);	
-	
-	System.out.println("Paso");
 		
 	}
 
-public void cargarListaNavegador() {
-	
-}
 
+
+	
+	public void abrir() {
+		this.vistaPrincipal.showDialogAbrir();
+		String  urlArchivo =  vistaPrincipal.getUrl();
+		if (urlArchivo != null) {
+			this.sistema = new Sistema(urlArchivo);
+			this.vistaPrincipal.listarVariables(this.sistema.consultarVariables());
+			
+			
+		}
+		
+	}
 
 }

@@ -27,6 +27,8 @@ public class VistaPrincipal extends JFrame {
 	private JMenuItem menuItemGuardar;
 	private JMenu menuArchivo;
 	
+	private String url;
+	
 	private VistaNavegador vistaNavegador;
 	
 	private Modelo modelo;
@@ -45,8 +47,7 @@ public class VistaPrincipal extends JFrame {
 			this.getContentPane().add(vistaBotones, BorderLayout.NORTH);
 			this.vistaBotones.setLayout(new FlowLayout());	
 		 */
-		this.vistaNavegador = new VistaNavegador();
-		this.getContentPane().add(vistaNavegador, BorderLayout.LINE_START);
+		
 		
 		agregarArchivoMenuInterfaz();		
 	}
@@ -56,7 +57,7 @@ public class VistaPrincipal extends JFrame {
 
 	private void agregarArchivoMenuInterfaz() {
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		this.setTitle("Paint");
+		this.setTitle("Clima");
 		{
 			this.menuBar= new JMenuBar();
 			this.setJMenuBar(menuBar);
@@ -88,6 +89,23 @@ public class VistaPrincipal extends JFrame {
 			
 	}
 	
+	public void showDialogAbrir() {					
+		JFileChooser ventana = new JFileChooser();
+		int seleccion = ventana.showOpenDialog(null);
+		if (seleccion == JFileChooser.APPROVE_OPTION) {
+			File file = ventana.getSelectedFile();
+			url = file.getPath();			
+			System.out.println(url);
+		}
+	}
+	
+
+	public String getUrl() {
+		return url;
+	}
+
+
+
 
 	public JMenuItem getMenuItemAbrir() {
 		return menuItemAbrir;
@@ -105,6 +123,20 @@ public class VistaPrincipal extends JFrame {
 
 	public Modelo getModelo() {		
 		return modelo;
+	}
+
+
+
+
+	public void listarVariables(String[] consultarVariables) {
+		this.vistaNavegador = new VistaNavegador();
+		this.vistaNavegador.setListaVariables(consultarVariables);
+		this.vistaNavegador.cargarListaNavegar();
+		this.getContentPane().add(vistaNavegador, BorderLayout.LINE_START);
+		this.setVisible(true);
+		
+		
+		
 	}
 	
 

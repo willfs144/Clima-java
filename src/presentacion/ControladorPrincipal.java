@@ -19,6 +19,8 @@ public class ControladorPrincipal  implements ActionListener{
 		if (event.getSource() == vistaPrincipal.getMenuItemNuevo()) 
 			this.modelo.iniciar();
 		
+		else if (event.getSource() == vistaPrincipal.getMenuItemAbrir()) 
+			this.modelo.abrir();
 		
 	}
 	
