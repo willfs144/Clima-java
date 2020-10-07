@@ -1,12 +1,6 @@
 package logica;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import persistencia.LeerArchivo;
 import persistencia.VariableDAO;
 
@@ -30,14 +24,9 @@ public class Variable {
 	}
 
 
-
-
-
 	public String getNombre() {
 		return nombre;
 	}
-
-
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -49,43 +38,25 @@ public class Variable {
 		return forma;
 	}
 
-
-
 	public void setForma(int[] forma) {
 		this.forma = forma;
 	}
-
-
 
 	public String getTipoDato() {
 		return tipoDato;
 	}
 
-
-
 	public void setTipoDato(String tipoDato) {
 		this.tipoDato = tipoDato;
 	}
 	
-	
-	public String [] consultar() {
+	public List consultar() {
 		LeerArchivo leerArchivo = new LeerArchivo(url);
-		VariableDAO variableDAO= new VariableDAO(leerArchivo.getNcfile());	
-		ArrayList<ucar.nc2.Variable> lista = new ArrayList<ucar.nc2.Variable>(variableDAO.consultar());
-		String [] listaVariables = new String[lista.size()];
-		List<Variable> listaCompleta = new ArrayList<Variable>();
-		int index = 0;
-		for (ucar.nc2.Variable elemento : lista) {
-			listaVariables[index]= elemento.getFullName();
-			Variable variable = new Variable(elemento.getFullName(), elemento.getShape(), elemento.getDataType().toString());
-			listaCompleta.add(variable);
-			index++;			
-		}
-		return listaVariables;
-		
-		
+		VariableDAO variableDAO= new VariableDAO(leerArchivo.getNcfile());		
+		return variableDAO.consultar();	
 	}
 
+	
 
 
 	

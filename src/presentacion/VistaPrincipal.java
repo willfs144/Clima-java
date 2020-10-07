@@ -29,7 +29,7 @@ public class VistaPrincipal extends JFrame {
 	
 	private String url;
 	
-	private VistaNavegador vistaNavegador;
+	
 	
 	private Modelo modelo;
 	private ControladorPrincipal controladorPrincipal;
@@ -39,6 +39,9 @@ public class VistaPrincipal extends JFrame {
 		this.modelo = modelo;
 		this.controladorPrincipal = new ControladorPrincipal(this);
 		this.setLayout(new BorderLayout());
+		VistaTabla vistaTabla = new VistaTabla();
+		this.getContentPane().add(vistaTabla, BorderLayout.CENTER);
+		
 		
 		/*
 		 * this.vistaDibujo = new VistaDibujo(modelo);
@@ -129,13 +132,11 @@ public class VistaPrincipal extends JFrame {
 
 
 	public void listarVariables(String[] consultarVariables) {
-		this.vistaNavegador = new VistaNavegador();
-		this.vistaNavegador.setListaVariables(consultarVariables);
-		this.vistaNavegador.cargarListaNavegar();
+		VistaNavegador vistaNavegador = new VistaNavegador();
+		vistaNavegador.setListaVariables(consultarVariables);
+		vistaNavegador.cargarListaNavegar();
 		this.getContentPane().add(vistaNavegador, BorderLayout.LINE_START);
-		this.setVisible(true);
-		
-		
+		this.setVisible(true);		
 		
 	}
 	

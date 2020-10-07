@@ -1,11 +1,8 @@
 package persistencia;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import com.google.common.collect.ObjectArrays;
 
 import ucar.ma2.Array;
 import ucar.nc2.NetcdfFile;

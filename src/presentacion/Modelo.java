@@ -27,9 +27,7 @@ public void iniciar() {
 		String  urlArchivo =  vistaPrincipal.getUrl();
 		if (urlArchivo != null) {
 			this.sistema = new Sistema(urlArchivo);
-			this.vistaPrincipal.listarVariables(this.sistema.consultarVariables());
-			
-			
+			this.vistaPrincipal.listarVariables(sistema.consultarVariables());			
 		}
 		
 	}
