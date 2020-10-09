@@ -8,19 +8,19 @@ import ucar.nc2.Variable;
 
 
 public class LeerArchivo {
-	NetcdfFile ncfile;
+	NetcdfFile netcdArchivo;;
 	
 	
 	public LeerArchivo(String nombreArchivo) {		
-		  this.ncfile = null;
+		  this.netcdArchivo = null;
 		  try {
-		    ncfile = NetcdfFile.open(nombreArchivo);}
+		    netcdArchivo = NetcdfFile.open(nombreArchivo);}
 		  catch (IOException ioe) {
 		    System.out.println("trying to open " + nombreArchivo.toString()+"  "+ioe);}
 		  finally { 
-		    if (null != ncfile) { 
+		    if (null != netcdArchivo) { 
 		    	try {
-		    		ncfile.close();}
+		    		netcdArchivo.close();}
 		    	catch (IOException ioe) {
 		    		System.out.println("trying to close " + nombreArchivo.toString()+"  "+ioe);}
 		    }
@@ -29,7 +29,7 @@ public class LeerArchivo {
 	
 	
 	public NetcdfFile getNcfile() {
-		return ncfile;
+		return netcdArchivo;
 	}
 
 

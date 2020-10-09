@@ -6,12 +6,13 @@ import java.awt.Dimension;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JInternalFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListModel;
 
-public class VistaNavegador extends JPanel{
+public class VistaNavegador extends JInternalFrame{
 	
 	private JList<String> listaNavegador;
 	private DefaultListModel<String> modeloLista;
@@ -25,8 +26,8 @@ public class VistaNavegador extends JPanel{
 		//this.listaNavegador = new JList(modeloLista);
 		//listaNavegador.setBounds(40, 30, 80, 150);
 		//this.add(listaNavegador);
-		
-		
+		this.setTitle("Navegar Variables");
+		this.setVisible(true);
 	}
 	
 	public void cargarListaNavegar() {

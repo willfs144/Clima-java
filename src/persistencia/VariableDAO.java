@@ -11,19 +11,20 @@ import ucar.nc2.Variable;
 public class VariableDAO {
 	
 	private Array data;
-	private NetcdfFile ncfile;
+	private NetcdfFile netcdArchivo;
+	private Variable variable; 
 	
 	
 	public VariableDAO(NetcdfFile ncfile) {
-		this.ncfile = ncfile;
+		this.netcdArchivo = ncfile;
 	}
 
 	public List<Variable> consultar() {
-		return ncfile.getVariables();
+		return netcdArchivo.getVariables();
 	}
 	
-	public Array buscar(String filtro) {
-		Variable variable = ncfile.findVariable(filtro);
+	public Array buscarDatos(String filtro) {
+		 variable = netcdArchivo.findVariable(filtro);
 		 if (variable != null) {
 			 try {			
 				 data = variable.read();}
@@ -32,5 +33,33 @@ public class VariableDAO {
 		  }		
 		return data;
 	}
+	
+	
+	public int [] buscarForma(String nombre) {
+		return  netcdArchivo.findVariable(nombre).getShapeAll();
+	}
+	
+	public String buscarTipoDato(String nombre) {
+		return  netcdArchivo.findVariable(nombre).getDataType().name();
+	}
+	
+	
+	public String buscarDimension(String nombre) {
+		return  netcdArchivo.findVariable(nombre).getDimensionsString();
+	}
+	
+	public String buscarDescripcion(String nombre) {
+		return  netcdArchivo.findVariable(nombre).getDescription().toString();
+	}
+	
+	public String buscarGrupo(String nombre) {
+		return  netcdArchivo.findVariable(nombre).getGroup().getDODSName();
+	}
+	
+	public String buscarUnidades(String nombre) {
+		return  netcdArchivo.findVariable(nombre).getUnitsString();
+	}
+	
+	
 
 }

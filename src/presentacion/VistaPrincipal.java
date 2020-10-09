@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -15,6 +16,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import logica.Variable;
 
 
 public class VistaPrincipal extends JFrame {
@@ -29,6 +32,7 @@ public class VistaPrincipal extends JFrame {
 	
 	private String url;
 	
+	private VistaTabla vistaTabla;
 	
 	
 	private Modelo modelo;
@@ -39,7 +43,7 @@ public class VistaPrincipal extends JFrame {
 		this.modelo = modelo;
 		this.controladorPrincipal = new ControladorPrincipal(this);
 		this.setLayout(new BorderLayout());
-		VistaTabla vistaTabla = new VistaTabla();
+		this.vistaTabla = new VistaTabla();
 		this.getContentPane().add(vistaTabla, BorderLayout.CENTER);
 		
 		
@@ -131,12 +135,20 @@ public class VistaPrincipal extends JFrame {
 
 
 
-	public void listarVariables(String[] consultarVariables) {
+	public void listarVariables(String[] listaVariables) {
 		VistaNavegador vistaNavegador = new VistaNavegador();
-		vistaNavegador.setListaVariables(consultarVariables);
+		vistaNavegador.setListaVariables(listaVariables);
 		vistaNavegador.cargarListaNavegar();
 		this.getContentPane().add(vistaNavegador, BorderLayout.LINE_START);
 		this.setVisible(true);		
+		
+	}
+
+
+
+
+	public void mostarTabla(String [][] listaDatosTabla) {
+		this.vistaTabla.mostrarDatosVariables(listaDatosTabla);
 		
 	}
 	
