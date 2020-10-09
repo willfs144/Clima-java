@@ -20,12 +20,6 @@ public class VistaNavegador extends JInternalFrame{
 	
 	
 	public VistaNavegador() {
-			
-		//this.modeloLista = new DefaultListModel<String>();
-		//this.modeloLista.add(0 , "Vamos");
-		//this.listaNavegador = new JList(modeloLista);
-		//listaNavegador.setBounds(40, 30, 80, 150);
-		//this.add(listaNavegador);
 		this.setTitle("Navegar Variables");
 		this.setVisible(true);
 	}
@@ -38,10 +32,6 @@ public class VistaNavegador extends JInternalFrame{
 		listaNavegador.setSize(new Dimension(400, 700));
 		this.add(listaNavegador);
 		
-		//JScrollPane scroll = new JScrollPane();
-		//scroll.setBounds(12, 12,410, 510);
-		//scroll.setViewportView(listaNavegador);
-		//this.add(scroll);	
 	}
 
 	public void setListaVariables(String[] lista) {
