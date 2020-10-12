@@ -1,10 +1,12 @@
 package persistencia;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.List;
 
 
 import ucar.ma2.Array;
+import ucar.ma2.InvalidRangeException;
 import ucar.nc2.NetcdfFile;
 import ucar.nc2.Variable;
 
@@ -23,14 +25,17 @@ public class VariableDAO {
 		return netcdArchivo.getVariables();
 	}
 	
-	public Array buscarDatos(String filtro) {
-		 variable = netcdArchivo.findVariable(filtro);
-		 if (variable != null) {
-			 try {			
-				 data = variable.read();}
-			 catch (IOException e) {
-				 System.out.println("trying to read "+e);}
-		  }		
+	public Array buscarDatos(String varName) {
+		Variable v = netcdArchivo.findVariable(varName);
+		try {
+			this.netcdArchivo = NetcdfFile.open(this.netcdArchivo.getLocation());
+			 if (null == v) return null;
+			 Array data = v.read();
+			 System.out.println(data);
+		} catch (IOException e) {
+			 System.out.println(varName+"  "+e);
+		}
+		 
 		return data;
 	}
 	
@@ -49,7 +54,7 @@ public class VariableDAO {
 	}
 	
 	public String buscarDescripcion(String nombre) {
-		return  netcdArchivo.findVariable(nombre).getDescription().toString();
+		return  netcdArchivo.findVariable(nombre).getDescription();
 	}
 	
 	public String buscarGrupo(String nombre) {

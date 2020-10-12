@@ -32,10 +32,10 @@ public class Sistema {
 
 	private Variable crearRegistroVariable(ucar.nc2.Variable elemento) {
 		
-		Variable variable = new Variable();
-		variable.setNombre(elemento.getFullName());
-		variable.setForma(elemento.getShape());
-		variable.setTipoDato(elemento.getDataType().toString());
+		Variable variableObj = new Variable();
+		variableObj.setNombre(elemento.getFullName());
+		variableObj.setForma(elemento.getShape());
+		variableObj.setTipoDato(elemento.getDataType().toString());
 		
 		Dimension dimension = new Dimension();
 		dimension.setLongitud(elemento.getDimensions().size());
@@ -43,15 +43,15 @@ public class Sistema {
 		
 		Atributo atributo = new Atributo();
 		atributo.setNombre(elemento.getAttributes().toString());
-		//atributo.setUnidades(variable.buscarUnidades(elemento.getFullName()));
-		//atributo.setDescripcion(variable.buscarDescripcion(elemento.getFullName()));
-		//atributo.setGrupo(variable.buscarGrupo(elemento.getFullName()));
-		//atributo.setDatos(variable.buscarDatos(elemento.getFullName()));		
+		atributo.setUnidades(variable.buscarUnidades(elemento.getFullName()));
+		atributo.setDescripcion(variable.buscarDescripcion(elemento.getFullName()));
+		atributo.setGrupo(variable.buscarGrupo(elemento.getFullName()));
+		//atributo.setDatos(variable.buscarDatos(elemento.getFullName()));
 		
-		variable.setDimension(dimension);
-		variable.setAtributo(atributo);
+		variableObj.setDimension(dimension);
+		variableObj.setAtributo(atributo);
 		
-		return variable;
+		return variableObj;
 	}
 	
 	

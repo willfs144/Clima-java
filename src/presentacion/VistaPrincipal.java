@@ -33,7 +33,7 @@ public class VistaPrincipal extends JFrame {
 	private String url;
 	
 	private VistaTabla vistaTabla;
-	
+	private VistaNavegador vistaNavegador;
 	
 	private Modelo modelo;
 	private ControladorPrincipal controladorPrincipal;
@@ -43,19 +43,9 @@ public class VistaPrincipal extends JFrame {
 		this.modelo = modelo;
 		this.controladorPrincipal = new ControladorPrincipal(this);
 		this.setLayout(new BorderLayout());
-		this.vistaTabla = new VistaTabla();
+		this.vistaNavegador = new VistaNavegador(modelo);
+		this.vistaTabla = new VistaTabla(modelo);
 		this.getContentPane().add(vistaTabla, BorderLayout.CENTER);
-		
-		
-		/*
-		 * this.vistaDibujo = new VistaDibujo(modelo);
-			this.getContentPane().add(vistaDibujo, BorderLayout.CENTER);
-			this.vistaBotones = new VistaBotones(modelo);
-			this.getContentPane().add(vistaBotones, BorderLayout.NORTH);
-			this.vistaBotones.setLayout(new FlowLayout());	
-		 */
-		
-		
 		agregarArchivoMenuInterfaz();		
 	}
 
@@ -106,23 +96,29 @@ public class VistaPrincipal extends JFrame {
 		}
 	}
 	
+	public void listarVariables(String[] listaVariables) {		
+		vistaNavegador.setListaVariables(listaVariables);
+		vistaNavegador.cargarListaNavegar();
+		this.getContentPane().add(vistaNavegador, BorderLayout.LINE_START);
+		this.setVisible(true);		
+	}
+
+	public void mostarTabla(String [][] listaDatosTabla) {
+		this.vistaTabla.mostrarDatosVariables(listaDatosTabla);
+		
+	}
 
 	public String getUrl() {
 		return url;
 	}
 
-
-
-
 	public JMenuItem getMenuItemAbrir() {
 		return menuItemAbrir;
 	}
 
-
 	public JMenuItem getMenuItemGuardar() {
 		return menuItemGuardar;
 	}
-
 
 	public JMenuItem getMenuItemNuevo() {
 		return menuItemNuevo;
@@ -132,25 +128,24 @@ public class VistaPrincipal extends JFrame {
 		return modelo;
 	}
 
-
-
-
-	public void listarVariables(String[] listaVariables) {
-		VistaNavegador vistaNavegador = new VistaNavegador();
-		vistaNavegador.setListaVariables(listaVariables);
-		vistaNavegador.cargarListaNavegar();
-		this.getContentPane().add(vistaNavegador, BorderLayout.LINE_START);
-		this.setVisible(true);		
-		
+	public VistaTabla getVistaTabla() {
+		return vistaTabla;
 	}
 
 
 
 
-	public void mostarTabla(String [][] listaDatosTabla) {
-		this.vistaTabla.mostrarDatosVariables(listaDatosTabla);
-		
+	public VistaNavegador getVistaNavegador() {
+		return vistaNavegador;
 	}
+	
+	
+
+	
+
+
+
+	
 	
 
 

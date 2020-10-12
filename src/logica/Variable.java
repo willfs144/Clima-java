@@ -1,12 +1,13 @@
 package logica;
 
+import java.util.ArrayList;
 import java.util.List;
 import persistencia.LeerArchivo;
 import persistencia.VariableDAO;
+import ucar.ma2.Array;
 
 public class Variable {
 	
-	private String url;
 	private String nombre;
 	private int [] forma;
 	private String tipoDato;
