@@ -1,28 +1,21 @@
 package presentacion;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
+import java.awt.Font;
+import java.awt.Insets;
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
-import logica.Variable;
 
 
 public class VistaPrincipal extends JFrame {
-	
-	
 	
 	private JMenuBar menuBar;
 	private JMenuItem menuItemNuevo;
@@ -102,11 +95,41 @@ public class VistaPrincipal extends JFrame {
 		this.getContentPane().add(vistaNavegador, BorderLayout.LINE_START);
 		this.setVisible(true);		
 	}
+	
+	public void mostrarVentanaResultados(String resultado) {
+		JFrame jframe = new JFrame();
+		jframe.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		jframe.setLayout(new BorderLayout());
+		jframe.setSize(580, 500);		
+		jframe.setResizable(true);
+		
+		Font fuente = new Font("Dialog", Font.BOLD, 12);		
+		JTextArea texto = new JTextArea();		
+		texto.setText(resultado);		
+		texto.setWrapStyleWord(true);		
+		texto.setFont(fuente);
+		texto.setMargin(new Insets(10,10,10,10));
+		texto.setEditable(false);
+		
+		
+		JScrollPane scroll = new JScrollPane (texto, 
+			    JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS); 
+	
+		
+		jframe.add(scroll); 
+		jframe.setTitle("Resultados: ");
+		jframe.setVisible(true);
+	}
 
 	public void mostarTabla(String [][] listaDatosTabla) {
 		this.vistaTabla.mostrarDatosVariables(listaDatosTabla);
 		
 	}
+	
+	public void mostrarMensaje(String msg, String titulo) {
+		JOptionPane.showMessageDialog(this, msg, titulo,JOptionPane.ERROR_MESSAGE);	
+	}
+	
 
 	public String getUrl() {
 		return url;
@@ -132,12 +155,11 @@ public class VistaPrincipal extends JFrame {
 		return vistaTabla;
 	}
 
-
-
-
 	public VistaNavegador getVistaNavegador() {
 		return vistaNavegador;
 	}
+
+
 	
 	
 

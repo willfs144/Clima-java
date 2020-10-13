@@ -3,13 +3,13 @@ package presentacion;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class ControladorVistaNavegador implements MouseListener{
+public class ControladorNavegador implements MouseListener{
 	
 	private VistaNavegador vista;
 	private Modelo modelo;
 	
 
-	public ControladorVistaNavegador(VistaNavegador vistaNavegador) {
+	public ControladorNavegador(VistaNavegador vistaNavegador) {
 		this.vista = vistaNavegador;
 		this.modelo = vistaNavegador.getModelo();		
 	}

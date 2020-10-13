@@ -1,10 +1,8 @@
 package logica;
 
-import java.util.ArrayList;
 import java.util.List;
 import persistencia.LeerArchivo;
 import persistencia.VariableDAO;
-import ucar.ma2.Array;
 
 public class Variable {
 	
@@ -31,9 +29,10 @@ public class Variable {
 		return variableDAO.consultar();	
 	}
 
-	public List buscarDatos(String filtro) {
-		return (List) variableDAO.buscarDatos(filtro);
+	public String buscarDatos(String filtro) {
+		return variableDAO.buscarDatos(filtro);
 	}
+	
 	
 	
 	public int [] buscarForma(String nombre) {
@@ -59,6 +58,14 @@ public class Variable {
 	
 	public String buscarUnidades(String nombre) {
 		return  variableDAO.buscarUnidades(nombre);
+	}
+	
+	public String buscarDeclaracion(String nombre) {
+		return variableDAO.buscarDeclaracion(nombre);
+	}
+
+	public String buscarNcML(String seleccion) {
+		return variableDAO.buscarNcML(seleccion);
 	}
 
 	
@@ -103,6 +110,8 @@ public class Variable {
 		this.atributo = atributo;
 	}
 
+
+	
 
 	
 

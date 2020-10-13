@@ -1,19 +1,15 @@
 package presentacion;
 
-import java.awt.Dimension;
-import java.util.ArrayList;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
+
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-
-import logica.Variable;
 
 public class VistaTabla extends JInternalFrame{
 	
@@ -25,16 +21,14 @@ public class VistaTabla extends JInternalFrame{
 	private JMenuItem menuItemDatos;
 	private JMenuItem menuItemTabla;
 	
-	
-	private String [][] datos = null;
 	private String [] titulos = new String[] {"nombre", "descripcion", "dimensiones", "tipodato", "grupo", "forma", "unidades"};
 	
 	private Modelo modelo;
-	private ControladorVistaTabla controladorVistaTabla;
+	private ControladorTabla controladorVistaTabla;
 	
 	public VistaTabla(Modelo modelo) {
 		this.modelo = modelo;
-		this.controladorVistaTabla = new ControladorVistaTabla(this);
+		this.controladorVistaTabla = new ControladorTabla(this);
 		
 		this.setTitle("Tabla Variables Datos: ");
 		this.scrollpanel = new JScrollPane();
@@ -57,21 +51,25 @@ public class VistaTabla extends JInternalFrame{
 				menuItemDeclaracion = new JMenuItem();
 				popupMenu.add(menuItemDeclaracion);
 				menuItemDeclaracion.setText("Mostrar Declaración");
+				menuItemDeclaracion.addActionListener(controladorVistaTabla);
 			}
 			{
 				menuItemNcML = new JMenuItem();
 				popupMenu.add(menuItemNcML);
 				menuItemNcML.setText("Mostrar NcML");
+				menuItemNcML.addActionListener(controladorVistaTabla);
 			}
 			{
 				menuItemDatos = new JMenuItem();
 				popupMenu.add(menuItemDatos);
 				menuItemDatos.setText("Mostrar Datos");
+				menuItemDatos.addActionListener(controladorVistaTabla);
 			}
 			{
 				menuItemTabla = new JMenuItem();
 				popupMenu.add(menuItemTabla);
 				menuItemTabla.setText("Mostrar tabla de datos");
+				menuItemTabla.addActionListener(controladorVistaTabla);
 			}
 			this.popupMenu.addMouseListener(controladorVistaTabla);
 		}
@@ -99,28 +97,42 @@ public class VistaTabla extends JInternalFrame{
 		this.tabla.addMouseListener(controladorVistaTabla);
 		
 	}
+	
+	public void mostrarMenu(int posicionX, int posicionY) {
+		this.popupMenu.show(this.getParent(), posicionX, posicionY);
+	}
+	
+	public void seleccionarFilaTabla(int fila) {		
+		this.tabla.setRowSelectionInterval(fila, fila);		
+	}
 
 	public Modelo getModelo() {
 		return modelo;
 	}
 
-
-
-	public void seleccionarFilaTabla(int fila) {		
-		this.tabla.setRowSelectionInterval(fila, fila);		
-	}
-
-
-
 	public JTable getTabla() {
 		return tabla;
 	}
 
-
-
-	public void mostrarMenu(int posicionX, int posicionY) {
-		this.popupMenu.show(this.getParent(), posicionX, posicionY);
+	public JMenuItem getMenuItemDeclaracion() {
+		return menuItemDeclaracion;
 	}
+
+	public JMenuItem getMenuItemNcML() {
+		return menuItemNcML;
+	}
+
+	public JMenuItem getMenuItemDatos() {
+		return menuItemDatos;
+	}
+
+	public JMenuItem getMenuItemTabla() {
+		return menuItemTabla;
+	}
+
+	
+
+
 	
 	
 	

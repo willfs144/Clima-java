@@ -1,9 +1,6 @@
 package presentacion;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.Point;
-
+import java.util.Arrays;
 import logica.Sistema;
 
 public class Modelo {
@@ -47,6 +44,50 @@ public void iniciar() {
 
 	public void mostrarMenuTablaDatos(int posicionX, int posicionY) {
 		this.vistaTabla.mostrarMenu(posicionX, posicionY);
+		
+	}
+
+	public void mostrarResultadoDeclaracion() {
+		String seleccion = seleccionItemVariable();
+		if (seleccion != null) {
+			String resultado = sistema.consultarItemDeclaracion(seleccion);
+			this.vistaPrincipal.mostrarVentanaResultados(resultado);
+		}		
+	}
+
+	public void mostrarResultadoNcML() {		
+		String seleccion = seleccionItemVariable();
+		if (seleccion != null) {
+			String resultado = sistema.consultarItemNcML(seleccion);
+			this.vistaPrincipal.mostrarVentanaResultados(resultado);
+		}
+	}	
+
+	public void mostrarResultadoDatos() {
+		String seleccion = seleccionItemVariable();
+		if (seleccion != null) {
+			String resultado = sistema.consultarItemDatosVariable(seleccion);
+			String resultados []= resultado.split(" ");
+			this.vistaPrincipal.mostrarVentanaResultados(seleccion+" = "+Arrays.toString(resultados));
+		}
+		
+	}
+
+	public void mostrarResultadoTabla() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private String seleccionItemVariable() {
+		String seleccion = vistaNavegador.getListaNavegador().getSelectedValue();
+		if (seleccion != null) 
+			return seleccion;
+		else {
+			this.vistaPrincipal.mostrarMensaje("Debe seleccionar una variable", "Aviso");
+			return null;
+		}
+			
+		
 		
 	}
 

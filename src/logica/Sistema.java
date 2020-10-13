@@ -2,7 +2,6 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Sistema {
 	
@@ -46,7 +45,7 @@ public class Sistema {
 		atributo.setUnidades(variable.buscarUnidades(elemento.getFullName()));
 		atributo.setDescripcion(variable.buscarDescripcion(elemento.getFullName()));
 		atributo.setGrupo(variable.buscarGrupo(elemento.getFullName()));
-		//atributo.setDatos(variable.buscarDatos(elemento.getFullName()));
+		//atributo.setDatos(variable.buscarDatosIniciales(elemento.getFullName()));
 		
 		variableObj.setDimension(dimension);
 		variableObj.setAtributo(atributo);
@@ -54,23 +53,6 @@ public class Sistema {
 		return variableObj;
 	}
 	
-	
-	
-
-	public Variable getVariable() {
-		return variable;
-	}
-	public void setVariable(Variable variable) {
-		this.variable = variable;
-	}
-	public ArrayList<Variable> getVariables() {		
-		return variables;
-	}
-	public void setVariables(ArrayList<Variable> variables) {
-		this.variables = variables;
-	}
-
-
 	public String[][] consultarDatosVariables() {
 		
 		String [][] tabla = new String[this.variables.size()][7];
@@ -87,7 +69,35 @@ public class Sistema {
 		}
 		return tabla;
 	}
+
+
+	public String consultarItemDeclaracion(String seleccion) {		
+		return variable.buscarDeclaracion(seleccion);
+	}
+	public String consultarItemNcML(String seleccion) {
+		return variable.buscarNcML(seleccion);
+	}
 	
+	public String consultarItemDatosVariable(String seleccion) {
+		return variable.buscarDatos(seleccion).toString();
+	}
+	
+	public Variable getVariable() {
+		return variable;
+	}
+	public void setVariable(Variable variable) {
+		this.variable = variable;
+	}
+	public ArrayList<Variable> getVariables() {		
+		return variables;
+	}
+	public void setVariables(ArrayList<Variable> variables) {
+		this.variables = variables;
+	}
+
+
+
+
 	
 	
 	
