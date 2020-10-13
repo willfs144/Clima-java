@@ -21,7 +21,7 @@ public class Variable {
 		this.variableDAO= new VariableDAO(leerArchivo.getNcfile());	
 	}
 	
-
+	
 	public Variable() {
 	}
 

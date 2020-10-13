@@ -33,9 +33,6 @@ public class VariableDAO {
 		return "";
 	}
 	
-	
-	
-	
 	public int [] buscarForma(String nombre) {
 		return  netcdArchivo.findVariable(nombre).getShapeAll();
 	}
@@ -73,7 +70,6 @@ public class VariableDAO {
 			e.printStackTrace();
 		}
 		return null;
-	}
-	
+	}	
 
 }
